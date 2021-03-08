@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/lightslider.css" />
+    <script src="js/JQuery3.3.1.js"></script>
+    <script src="js/lightslider.js"></script>
+
+
+    <title>V-TV</title>
+</head>
+<body>
+    <header>
+        
+        <ul>
+        <li id="logo"><a href="/">V-TV</a></li>
+        <li class="menu"><a href="/">Home</a></li>
+        <li class="menu"><a href="/movies">Movies & TV</a></li>
+        <li class="menu sign"><a href="/SignUp">Sign Up</a></li>
+        <li class="menu sign"><a href="/Login">Log In</a></li>
+        </ul>
+
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer class="footer">
+        <div class="inner-footer">
+            <div class="social-links">
+                <ul>
+                    <li class="social-items"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="social-items"><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                    <li class="social-items"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li class="social-items"><a href="#"><i class="fa fa-tumblr-square"></i></a></li>
+                </ul>
+            </div>
+
+<div class="quick-links">
+    <ul>
+        <li class="quick-items"><a href="#">Home</a></li>
+        <li class="quick-items"><a href="#">Services</a></li>
+        <li class="quick-items"><a href="#">About Us</a></li>
+        <li class="quick-items"><a href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="outer-footer">
+    Copyright &copy; V-TV. All Rights Reserved.
+</div>
+
+        </div>
+    </footer>
+
+
+    <script>
+$(document).ready(function() {
+    $('#autoWidth,#autoWidth2').lightSlider({
+        autoWidth:true,
+        loop:true,
+        onSliderLoad: function() {
+            $('#autoWidth,#autoWidth2').removeClass('cS-hidden');
+        } 
+    });  
+  });
+  </script>
+</body>
+
+</html>

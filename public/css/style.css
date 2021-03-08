@@ -1,0 +1,434 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing:border-box;
+}
+body{
+    background-color: rgb(0, 0, 0);
+    padding: 0 30px;
+}
+
+header{
+    height: 60px;
+    width:100%;
+    position: relative;
+    top: 0;
+    z-index: 2;
+}
+#logo{
+    line-height: 60px;
+    margin-left: 40px;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight:bold;
+   margin-right: 10px;
+}
+#logo a{
+    color: rgb(87, 195, 228);
+
+    text-decoration: none;
+}
+#logo:hover a{
+    color: rgb(7, 173, 233);
+    
+}
+
+ul{ 
+    list-style-type: none;
+    margin-top: 10px;
+}
+ul li{
+    display: inline-block;
+    margin:auto;
+}
+    
+.menu a{
+    text-decoration: none;
+    
+    color:rgb(255, 255, 255);
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+    font-weight: bold;
+
+}
+
+.sign{
+    float:right;
+    margin-top: 25px;
+}
+
+.menu a:hover{
+    background-color: #fff;
+    color: #000;
+    
+    border-radius: 10px;
+    }
+    
+.slider{
+    position: relative;
+    width: auto;
+height:500px;
+overflow: 
+hidden;
+
+}
+.slider .slide
+{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    /* height: 655px; */
+    
+}
+
+.slider .slide img
+{
+    
+    z-index: 1;
+    border-radius: 5px;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.slider .slide .txt{
+    position: absolute;
+    top:0;
+    padding: 15px 30px;
+}
+
+.slider .slide .txt h1{
+   color:#fff;
+   font-size: 45px;
+   text-transform: uppercase;
+   font-weight: 800;
+   letter-spacing: 2px; 
+}
+
+.slider .slide .txt p{
+  color: #fff;
+  background: rgba(0,0,0,0.1);  
+  font-size: 16px;
+  width: 60px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.slider .navigation
+{
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slider .navigation .btn
+{
+    background: rgba(255,255,255,0.5);
+    width:12px;
+    height: 12px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.slider .navigation
+{
+    z-index:2;
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    left:50%;
+    transform:translateX(-50%);
+
+}
+
+.slider .navigation .btn{
+    background: rgba(255,255,255,0.5);
+    width:12px;
+    height: 12px;
+    margin:10px;
+}
+
+.feature
+{
+    margin-top: 10px;
+    margin-left:20px;
+margin-bottom: 10px;
+
+    border-top:1px solid rgba(177, 173, 173, 0.76);
+}
+
+.heading{ 
+    color: white;
+    font-weight: 500;
+    font-size:1.3rem;
+    margin:20px 10px;
+
+margin-bottom: 0px;
+margin-top: 10px;
+}
+
+.cs-hidden
+{
+    overflow: visible !important;
+}
+
+  
+
+.box
+{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    margin:20px 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    width:200px;
+    background-color: #ffffff;
+
+}
+
+.Img
+{
+    width:100%;
+    height:270px;
+}
+
+.Img img
+{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.Text
+{
+    color:#3a3a3a;
+    margin:0px;
+
+}
+
+.list
+{
+    margin-top: 10px;
+    margin-left:20px;
+    border-top:1px solid rgba(177, 173, 173, 0.76);
+
+}
+
+
+.banner
+{
+    width: auto;
+height:300px;
+margin-bottom: 10px;
+overflow: 
+hidden;
+}
+
+.banner img{
+    width: 100%;
+    height:100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    object-fit: cover;
+    border-top:1px solid rgba(177, 173, 173, 0.76);
+
+
+}
+
+.inner-footer
+{
+    border-top:1px solid rgba(177, 173, 173, 0.76);
+    margin:0;
+    padding:0;
+}
+
+.social-links
+{
+    display: flex;
+}
+.social-links ul
+{
+    padding:10px;
+    display: flex;
+    width:300px;
+    height:30px;
+    margin:auto;
+
+}
+
+.social-items
+{
+    list-style: none;
+}
+
+.social-items a
+{
+    padding:10px 20px;
+    font-size: 40px;
+    color: #6cccc6;
+    transition: all .25s;
+
+}
+.social-items a:hover{
+    color:#54a09b;
+}
+
+.quick-links
+{
+    display: flex;
+    align-content: center;
+    width:560px;
+    height:70px;
+    margin-top:10px;
+    margin-bottom: -10px;
+    margin:auto;
+}
+.quick-links ul{
+    display: flex;
+}
+.quick-items
+{
+    list-style: none;
+}
+.quick-items a
+{
+    text-decoration: none;
+    padding: 0 25px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    transition: all .25s;
+}
+.quick-items a:hover{
+    color:#6cccc6;
+}
+
+.outer-footer
+{
+    padding:10px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+
+.loginbox{
+	width: 380px;
+	height: 420px;
+	position: relative;
+background-color: #fff;
+border-radius: 10px;
+	/* background: transparent; */
+	color: #fff;
+	left:50%;
+    margin-top: 250px;
+    margin-bottom: -125px;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+
+.signUp
+{
+    height: 500px !important;
+    margin-bottom: -150px;
+
+}
+
+.login{
+	margin: -5px;
+    margin-top: -20px;
+    margin-bottom:10px;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 26px;
+	font-weight: bold;
+
+    color: black;
+
+
+}
+.loginbox p{
+	margin: 0;
+	padding: 0;
+    font-size: 22px;
+	font-weight: bold;
+    color: black;
+
+}
+.loginbox input{
+	width: 100%;
+	margin-bottom: 20px;
+	font-size: 14px;
+    color: black;
+}
+.loginbox input[type="password"]
+{
+	border: none;
+	border-bottom: 1px solid rgb(0, 0, 0);
+	background: transparent;
+	font-size: 14px;
+
+	outline: none;
+	height: 40px;
+    color: rgb(0, 0, 0);
+    
+	}
+.loginbox input[type="password"]:hover{
+	font-size: 18px;
+
+}	
+
+.loginbox input[type="text"],input[type="email"]
+{
+	border: none;
+	border-bottom: 1px solid rgb(0, 0, 0);
+	background: transparent;
+	font-size: 14px;
+
+	outline: none;
+	height: 40px;
+    color: rgb(0, 0, 0);
+    
+	}
+.loginbox input[type="text"]:hover{
+	font-size: 18px;
+
+}	
+
+
+
+.loginbox input[type="submit"]{
+	border: none;
+	outline: none;
+	height: 40px;
+	background:rgb(87, 195, 228);
+	color: #fff;
+	font-size: 18px;
+    font-weight: bold;
+	border-radius: 20px;
+}
+.loginbox input[type="submit"]:hover{
+	cursor: pointer;
+	background: rgb(24, 152, 190);
+	color: rgb(255, 255, 255);
+}
+.loginbox a{
+	text-decoration: 12px;
+	font-size: 15px;
+	line-height: 20px;
+	color: darkgrey;
+	margin-bottom: 10px;
+}
+.loginbox a:hover{
+	color: rgb(24, 152, 190);
+}
+
