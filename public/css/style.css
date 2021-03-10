@@ -382,7 +382,7 @@ border-radius: 10px;
     color: rgb(0, 0, 0);
     
 	}
-.loginbox input[type="password"]:hover{
+.loginbox input[type="password"]:hover, input[type="email"]:hover{
 	font-size: 18px;
 
 }	
@@ -430,5 +430,28 @@ border-radius: 10px;
 }
 .loginbox a:hover{
 	color: rgb(24, 152, 190);
+}
+
+.error{
+    color:red;
+    margin-top :-20px;
+    margin-bottom: 10px;
+}
+
+.content
+{
+    color: rgb(38, 197, 245);
+}
+.content1
+{
+    font-weight: 500;
+    font-size:1.3rem;
+    margin-bottom: 10px;
+}
+.dash
+{
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-bottom: 10px;
 }
 
