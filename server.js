@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
-const PORT = 3000;
 
 const data = require("./FakeDB");
 
@@ -31,12 +30,12 @@ app.get("/movies",(req,res)=>
 
 
 
-app.get("/SignUp",(req,res)=>
+app.get("/signUp",(req,res)=>
 {
     res.render("signUp",{title:"SignUP"}); 
 })
 
-app.post("/SignUp",(req,res)=>
+app.post("/signUp",(req,res)=>
 {
     const nameError = [];
 
@@ -115,12 +114,12 @@ sgMail
     }
 })
 
-app.get("/Login",(req,res)=>
+app.get("/login",(req,res)=>
 {
     res.render("login",{title:"Login"});
 })
 
-app.post("/Login",(req,res)=>
+app.post("/login",(req,res)=>
 {
     const nameError = [];
 
@@ -159,6 +158,7 @@ app.get("/description/:id",(req,res)=>
     res.render("description",{title:"Description",movie});
 })
 
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
