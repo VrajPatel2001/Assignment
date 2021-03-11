@@ -515,8 +515,13 @@ border-radius: 10px;
     margin-bottom: 10px;
 }
 
+
 @media screen and (max-width:625px)
 {
+    .dash{
+        margin-top:100px;
+        margin-left:10px;
+    }
     .loginbox{
         width: 350px;
         /* height: 420px; */
