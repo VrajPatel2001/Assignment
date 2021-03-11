@@ -146,7 +146,7 @@ app.post("/login",(req,res)=>
         res.render("login",{title:"Login",nameError,passError}); 
     }
     else{
-        res.render("index",{title:"V-TV"});
+        res.render("index",{title:"V-TV",featureMovies,movies,tvShows,featureTvShows});
     }
 })
 
