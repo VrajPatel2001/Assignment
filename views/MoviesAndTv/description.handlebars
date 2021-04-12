@@ -605,9 +605,10 @@ border-radius: 10px;
            <img src="{{movie.image}}">
 <h1>{{movie.name}}</h1>
 <p>{{movie.description}}</p>
-<a href="#">Buy at ${{movie.p_price}}</a>
-<a href="#">Rent at ${{movie.r_price}}</a>
-
+{{#if isUser}}
+<a href="/services/butCart">Buy at ${{movie.p_price}}</a>
+<a href="/services/rentCart">Rent at ${{movie.r_price}}</a>
+{{/if}}
        </div>
        <div class="col-md-6 text-center">
 <img src="{{movie.b_image}}" class="movie-img">

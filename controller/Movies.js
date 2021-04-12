@@ -56,6 +56,15 @@ router.get("/description/:id",(req,res)=>
    let id = req.params.id;
    movieModel.findById(id)
    .then((movie)=>{
+
+    if(req.session.user.type == "user")
+    {
+        const isUser= 1;
+    }
+    else{
+        isUser= 0;
+    }
+    
     res.render("MoviesAndTv/description",{title:"Description",movie});
    })
    .catch(err=>console.log(`Error happened when inserting in the database: ${err}`));

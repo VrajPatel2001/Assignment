@@ -1,9 +1,3 @@
-
-<form class="search" method="GET" action="/services/search">
-    <input type="text" name="search" class="query" placeholder="Seach any movie or tv shows">
-<button type="submit" name="search-button"><i class="fa fa-search"></i></button>  
-</form>
-
 <div class="list">
     <h3 class="heading">
         Tv shows
@@ -14,7 +8,7 @@
     {{#each tvShows}}
     <li>
         <div class="box">
-    <div class="Img"><a href="/moviesAndTv/description/{{this.id}}"><img src="{{this.image}}"> </a></div>
+    <div class="Img"><a href="/services/updateMovie/{{this.id}}"><img src="{{this.image}}"> </a></div>
     <div class="Text"> {{this.name}}</div>
     </div>
      </li>
@@ -34,7 +28,7 @@
     {{#each movies}}
     <li>
         <div class="box">
-    <div class="Img"><a href="/moviesAndTv/description/{{this.id}}"><img src="{{this.image}}"> </a></div>
+    <div class="Img"><a href="/services/updateMovie/{{this.id}}"><img src="{{this.image}}"> </a></div>
     <div class="Text"> {{this.name}}</div>
     </div>
      </li>

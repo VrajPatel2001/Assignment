@@ -1,0 +1,47 @@
+<main>
+<div class="movieBox">
+<h1 class="title">Create Movie Or TV Show</h1>
+<form class=form action="/services/createMovie" method="POST" enctype="multipart/form-data">
+	{{#each errors}}
+<div class="error">{{this}}</div>
+{{/each}}
+<label>Name</label>
+<input type="text" name="name" placeholder="Enter movie name">
+
+<label>Description</label>
+<br>
+    <textarea id="description" name="description" placeholder="Enter description"></textarea><br>
+
+<label>Feature: </label>
+<select name="feature">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+<br>
+<br>
+<label>Type: </label>
+<select name="type">
+            <option value="movie">Movie</option>
+            <option value="tv">TV</option>
+        </select>
+<br>
+<br>
+<label>Rent Price</label>
+<input type="number" name="r_price" placeholder="Enter rent value">
+
+<label>Buy Price</label>
+<input type="number" name="p_price" placeholder="Enter buy value">
+
+<label>Cover Image</label>
+<input type="file" name="coverImage"> <br>
+
+<label>Image</label>
+<input type="file" name="image"> <br>
+
+
+<input type="submit" name="submit" value="Submit"><br>
+
+</form>
+</div>
+
+</main>

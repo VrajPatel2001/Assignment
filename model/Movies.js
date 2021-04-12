@@ -18,15 +18,15 @@ const mongoose = require('mongoose');
         type: String,
         required:true
     },
-    b_image:
-    {
-        type: String,
-        required:true
-    },
+    
     image:
     {
         type: String,
-        required:true
+    },
+    b_image:
+    {
+        type: String,
+        
     },
     r_price:
     {

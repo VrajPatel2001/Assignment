@@ -3,7 +3,7 @@ const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
-
+const fileUpload = require('express-fileupload');
 
 
 require("dotenv").config({ path: './config/keys.env' });
@@ -28,10 +28,12 @@ app.engine('handlebars', expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 
+app.use(fileUpload());
+
 const generalRoutes = require("./controller/General");
 const moviesRoutes = require("./controller/Movies");
 const userRoutes = require("./controller/User");
-
+const serviceRoutes = require("./controller/Services");
 
 
 app.use(session({
@@ -42,14 +44,27 @@ app.use(session({
 
  app.use((req,res,next)=>{
       res.locals.user = req.session.userInfo;
+      res.locals.rentCart = req.session.rentCart;
+      res.locals.buyCart = req.session.buyCart;
+
       next();
   })
 
+  app.use((req, res, next) => {
+    if (req.query.method == "PUT") {
+        req.method = "PUT"
+    }
+    else if (req.query.method == "DELETE") {
+        req.method = "DELETE"
+    }
+    next();
+})
 
 
 app.use("/", generalRoutes);
 app.use("/user", userRoutes);
 app.use("/moviesAndTv",moviesRoutes);
+app.use("/services",serviceRoutes);
 
 
 

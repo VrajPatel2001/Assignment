@@ -383,7 +383,6 @@ overflow: hidden;
 
 .loginbox{
 	width: 380px;
-	/* height: 420px; */
     height: auto;
 	position: relative;
 background-color: #fff;
@@ -401,7 +400,6 @@ border-radius: 10px;
 {
     height: 500px !important;
     margin-bottom: -150px;
-
 }
 
 .login{
@@ -425,11 +423,23 @@ border-radius: 10px;
     color: black;
 
 }
+
+.loginbox label{
+	margin: 0;
+	padding: 0;
+    font-size: 15px;
+	font-weight: bold;
+    color: black;
+
+}
 .loginbox input{
 	width: 100%;
 	margin-bottom: 20px;
 	font-size: 14px;
     color: black;
+	border: none;
+	border-bottom: 1px solid rgb(0, 0, 0);
+
 }
 .loginbox input[type="password"]
 {
@@ -442,11 +452,7 @@ border-radius: 10px;
 	height: 40px;
     color: rgb(0, 0, 0);
     
-	}
-.loginbox input[type="password"]:hover, input[type="email"]:hover{
-	font-size: 18px;
-
-}	
+	}	
 
 .loginbox input[type="text"],input[type="email"]
 {
@@ -459,11 +465,8 @@ border-radius: 10px;
 	height: 40px;
     color: rgb(0, 0, 0);
     
-	}
-.loginbox input[type="text"]:hover{
-	font-size: 18px;
-
-}	
+}
+	
 
 
 
@@ -499,6 +502,8 @@ border-radius: 10px;
     color:red;
     margin-top :-20px;
     margin-bottom: 10px;
+    padding:5px;
+
 }
 
 .content
@@ -590,3 +595,134 @@ border-radius: 10px;
     background:#107afd;
     font-weight: 600;
 }
+
+
+
+
+
+.movieBox{
+	width: 390px;
+    height: auto;
+	position: relative;
+background-color: #fff;
+border-radius: 10px;
+	color: #fff;
+	left:50%;
+    margin-top: 350px; 
+    margin-bottom: -150px;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+
+
+.title{
+	margin: -5px;
+    margin-top: -20px;
+    margin-bottom:10px;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 26px;
+	font-weight: bold;
+
+    color: black;
+
+
+}
+.movieBox p{
+	margin: 0;
+	padding: 0;
+    font-size: 22px;
+	font-weight: bold;
+    color: black;
+
+}
+
+.movieBox label{
+	margin: 0;
+	padding: 0;
+    font-size: 18px;
+	font-weight: bold;
+    color: black;
+
+}
+
+#name
+{
+	border: none;
+    width: 100%;
+	margin-bottom: 15px;
+    font-size: 14px;
+    color: black;
+    border-bottom: 1px solid rgb(0, 0, 0);
+
+}
+
+#description{
+    width: 100%;
+	margin-bottom: 15px;
+    font-size: 14px;
+    color: black;
+	/* border: none; */
+	border-bottom: 1px solid rgb(0, 0, 0);
+}
+.movieBox input{
+	width: 100%;
+	margin-bottom: 10px;
+	font-size: 14px;
+    color: black;
+	border: none;
+	border-bottom: 1px solid rgb(0, 0, 0);
+
+}
+
+
+.movieBox input[type="text"],input[type="number"]
+{
+	border: none;
+	border-bottom: 1px solid rgb(0, 0, 0);
+	background: transparent;
+	font-size: 14px;
+
+	outline: none;
+	height: 30px;
+    color: rgb(0, 0, 0);
+    
+}
+
+.movieBox input[type="file"]{
+    border: none;
+    border-bottom: none;
+}
+.movieBox input[type="submit"]{
+	border: none;
+	outline: none;
+	height: 40px;
+	background:rgb(87, 195, 228);
+	color: #fff;
+	font-size: 18px;
+    font-weight: bold;
+	border-radius: 20px;
+}
+.movieBox input[type="submit"]:hover{
+	cursor: pointer;
+	background: rgb(24, 152, 190);
+	color: rgb(255, 255, 255);
+}
+
+.search
+{
+    margin-top:10px;
+margin-bottom: -30px;
+margin-left: 30px;
+}
+
+.query{
+    width:20%;
+    height: 10%;
+	font-size: 14px;
+    color: black;
+	border: none;
+	border-bottom: 1px solid rgb(0, 0, 0);
+}
+

@@ -1,0 +1,47 @@
+<main>
+<div class="movieBox">
+<h1 class="title">Update Movie Or TV Show</h1>
+<form class=form method="POST" action="/Services/updateMovie/{{data._id}}?method=PUT" enctype="multipart/form-data">
+	{{#each errors}}
+<div class="error">{{this}}</div>
+{{/each}}
+<label>Name</label>
+    <textarea id="name" name="name">{{data.name}}</textarea><br>
+
+<label>Description</label>
+<br>
+    <textarea id="description" name="description" placeholder="Enter description">{{data.description}}</textarea><br>
+
+<label>Feature: </label>
+<select name="feature">
+            <option value="1" {{#if data.feature}}selected {{/if}}>Yes</option>
+            <option value="0" {{#unless data.feature}}selected {{/unless}}>No</option>
+        </select>
+<br>
+<br>
+<label>Type: </label>
+<select name="type">
+            <option value="movie" {{#if data.isMovie}}selected {{/if}}>Movie</option>
+            <option value="tv" {{#if data.isTv}}selected {{/if}}>TV</option>
+        </select>
+<br>
+<br>
+<label>Rent Price</label>
+<input type="number" name="r_price" placeholder="Enter rent value" value={{data.r_price}}>
+
+<label>Buy Price</label>
+<input type="number" name="p_price" placeholder="Enter buy value" value={{data.p_price}}>
+
+<label>Cover Image</label>
+<input type="file" name="coverImage"> <br>
+
+<label>Image</label>
+<input type="file" name="image"> <br>
+
+
+<input type="submit" name="submit" value="Submit"><br>
+
+</form>
+</div>
+
+</main>

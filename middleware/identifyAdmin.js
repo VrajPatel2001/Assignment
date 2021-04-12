@@ -4,7 +4,7 @@ const isAdmin = (req,res,next)=>{
         next();
     }
     else{
-        res.redirect("/user/logout");
+        res.render("Services/error");
     }
 }
 
