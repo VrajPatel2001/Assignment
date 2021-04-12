@@ -31,9 +31,10 @@
 <ul class="listing">
     
     {{#each featureTvShows}}
+
     <li>
         <div class="box">
-    <div class="Img"><a href="/description/{{this.id}}"><img src="{{this.image}}"> </a></div>
+    <div class="Img"><a href="/moviesAndTv/description/{{this._id}}"><img src="{{this.image}}"> </a></div>
     <div class="Text"> {{this.name}}</div>
     </div>
      </li>
@@ -57,7 +58,7 @@
     {{#each featureMovies}}
     <li>
         <div class="box">
-    <div class="Img"><a href="/description/{{this.id}}"><img src="{{this.image}}"> </a></div>
+    <div class="Img"><a href="/moviesAndTv/description/{{this._id}}"><img src="{{this.image}}"> </a></div>
     <div class="Text"> {{this.name}}</div>
     </div>
      </li>
@@ -66,9 +67,11 @@
 </ul>   
 </div>
 
+{{#unless login}}
 <div class="banner">
-   <a href="/signUp"><img src="/images/signUp.png"></a>
+   <a href="/user/signUp"><img src="/images/signUp.png"></a>
 </div>
+{{/unless}}
 
 
 

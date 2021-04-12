@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/lightslider.css" />
+    <link rel="stylesheet" href="/css/style.css">
     <script src="js/JQuery3.3.1.js"></script>
     <script src="js/lightslider.js"></script>
 
 
-    <title>V-TV</title>
+    <title>{{title}}</title>
 </head>
 <body>
     <header>
@@ -18,9 +17,16 @@
         <ul class="nav">
         <li id="logo"><a href="/">V-TV</a></li>
         <li class="menu"><a href="/">Home</a></li>
-        <li class="menu"><a href="/movies">Movies & TV</a></li>
-        <li class="menu sign"><a href="/signUp">Sign Up</a></li>
-        <li class="menu sign"><a href="/login">Log In</a></li>
+        <li class="menu"><a href="/moviesAndTv/movies">Movies & TV</a></li>
+        {{#unless user}}
+        <li class="menu sign"><a href="/user/signUp">Sign Up</a></li>
+        <li class="menu sign"><a href="/user/login">Log In</a></li>
+      {{/unless}}
+       {{#if user}}
+        <li class="menu sign"><a href="/user/logout">Log out</a></li>
+        <li class="menu sign"><a href="/user/dashboard">Profile</a></li>
+
+       {{/if}}
         </ul>
 
     </header>
@@ -41,7 +47,7 @@
 
 <div class="quick-links">
     <ul>
-        <li class="quick-items"><a href="#">Home</a></li>
+        <li class="quick-items"><a href="/">Home</a></li>
         <li class="quick-items"><a href="#">Services</a></li>
         <li class="quick-items"><a href="#">About Us</a></li>
         <li class="quick-items"><a href="#">Contact Us</a></li>
@@ -55,17 +61,6 @@
     </footer>
 
 
-    <script>
-$(document).ready(function() {
-    $('#autoWidth,#autoWidth2').lightSlider({
-        autoWidth:true,
-        loop:true,
-        onSliderLoad: function() {
-            $('#autoWidth,#autoWidth2').removeClass('cS-hidden');
-        } 
-    });  
-  });
-  </script>
 </body>
 
 </html>

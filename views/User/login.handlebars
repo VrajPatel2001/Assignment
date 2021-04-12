@@ -1,20 +1,24 @@
+<main>
+
+
+
+
 <div class="loginbox">
 <h1 class="login">Login Here</h1>
 <form class=form method="POST">
-<p>User name</p>
-<input type="text" name="username" placeholder="Enter your username">
-{{#each nameError}}
+	{{#each error}}
 <div class="error">{{this}}</div>
 {{/each}}
+<p>User name</p>
+<input type="text" name="email" placeholder="Enter your username">
 
 <p>Password</p>
 <input type="Password" name="password" placeholder="Enter your Password">
-{{#each passError}}
-<div class="error">{{this}}</div>
-{{/each}}
 
 <input type="submit" name="submit" value="Login"><br>
 
-<a href="/signUp"><b> Don't have an account?</b></a>		
+<a href="/user/signUp"><b> Don't have an account?</b></a>		
 	</form>
 </div>
+
+</main>
