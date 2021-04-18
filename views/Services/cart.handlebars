@@ -1,0 +1,23 @@
+<main>
+
+{{#if hasRent}}
+    <h1 class="content">
+        Cart module: 
+    </h1> 
+    {{!-- table view --}}
+     {{#each rentMovies}}
+    <h1 class="content">{{this.name}}</h1>
+    {{/each}}
+{{/if}}
+
+{{#if hasBuy}}
+    <h1 class="content">
+
+        Cart module: 
+    </h1>
+
+    {{#each buyMovies}}
+    <h1 class="content">{{this.name}}</h1
+    {{/each}}
+{{/if}}
+</main>

@@ -324,7 +324,7 @@ router.get("/deleteMovie",isLoggedIn,isAdmin,(req,res)=>{
     
     const movies = new Array;
     let length=0;
-    for(var i in items)
+    for(const i in items)
     {
     length++;
     }
@@ -373,22 +373,223 @@ router.get("/search",(req,res)=>{
 })
 
 router.get("/rentCart/:id",isLoggedIn,isUser,(req,res)=>{
-req.session.rentCart.push(req.params.id);
-res.redirect("/services/cart");
-    
+
+    const data = {
+        id:req.params.id
+    }
+if(!req.session.cart)
+{
+    req.session.cart = [data];
+}
+else{
+    req.session.cart.push(data);
+}
+res.redirect("/services/cart") ;
+
+        
 })
 
 router.get("/buyCart/:id",isLoggedIn,isUser,(req,res)=>{
 
-    req.session.buyCart.push(req.params.id);
-    res.redirect("/services/cart");
-    
+    const data = {
+        id:req.params.id
+    }
+if(!req.session.buyCart)
+{
+    req.session.buyCart = [data];
+}
+else{
+    req.session.buyCart.push(data);
+}
+
+   res.redirect("/services/cart") ;
     
 })
 
 
 router.get("/cart",isLoggedIn,isUser,(req,res)=>{
 
+
+    const rentMovies = new Array;
+    const buyMovies = new Array;
+
+    if(req.session.cart && !req.session.buyCart)
+    {
+    req.session.cart.forEach(item => {
+            
+            movieModel.find()
+    .then((data)=>{
+
+        const items = data.map(onedata=>{
+            return{
+                _id:onedata._id,
+                type:onedata.type,
+                name:onedata.name,
+                price:onedata.r_price
+
+            }
+        });
+    let length=0;
+    for(let i in items)
+    {
+    length++;
+    }
+    for(let i=0;i<length;i++)
+    {
+        if(items[i]._id==item.id)
+        {
+            //console.log(items[i]);
+
+            rentMovies.push(items[i]);
+
+        }
+    }
+   
+    const hasRent = 1;
+    const hasBuy = 0;
+
+    res.render("Services/cart",{title:"Cart",rentMovies,hasRent,hasBuy});
+})
+
+
+.catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+        }); 
+    }
+
+
+
+
+
+
+    if(req.session.buyCart && !req.session.cart)
+    {
+    req.session.buyCart.forEach(item => {
+            
+            // movieModel.findById(item.id)
+            // .then((movie)=>{
+            //     console.log(movie.name);
+            //     rentMovies.push(movie);
+            // })
+            // .catch(err=>console.log(`Error happened during finding in cart route: ${err}`));
+
+            movieModel.find()
+    .then((data)=>{
+
+        const items = data.map(onedata=>{
+            return{
+                _id:onedata._id,
+                type:onedata.type,
+                name:onedata.name,
+                price:onedata.b_price
+
+            }
+        });
+    let length=0;
+    for(let i in items)
+    {
+    length++;
+    }
+    for(let i=0;i<length;i++)
+    {
+        if(items[i]._id==item.id)
+        {
+            //console.log(items[i]);
+
+            buyMovies.push(items[i]);
+
+        }
+    }
+   
+    const hasRent =0;
+    const hasBuy = 1;
+
+    res.render("Services/cart",{title:"Cart",buyMovies,hasRent,hasBuy});
+})
+
+
+.catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+        }); 
+    }
+
+    if(req.session.buyCart && req.session.cart)
+    {
+        req.session.cart.forEach(item => {
+                
+                
+                movieModel.find()
+        .then((data)=>{
+    
+            const items = data.map(onedata=>{
+                return{
+                    _id:onedata._id,
+                    type:onedata.type,
+                    name:onedata.name,
+                    price:onedata.r_price
+    
+                }
+            });
+        let length=0;
+        for(let i in items)
+        {
+        length++;
+        }
+        for(let i=0;i<length;i++)
+        {
+            if(items[i]._id==item.id)
+            {
+                //console.log(items[i]);
+    
+                rentMovies.push(items[i]);
+    
+            }
+        }
+
+        req.session.buyCart.forEach(itemB => {
+                
+                movieModel.find()
+        .then((movies)=>{
+    
+            const itemsB = movies.map(movie=>{
+                return{
+                    _id:movie._id,
+                    type:movie.type,
+                    name:movie.name,
+                    price:movie.b_price
+    
+                }
+            });
+        let length=0;
+        for(let i in itemsB)
+        {
+        length++;
+        }
+        for(let i=0;i<length;i++)
+        {
+            if(itemsB[i]._id==itemB.id)
+            {
+                //console.log(items[i]);
+    
+                buyMovies.push(itemsB[i]);
+    
+            }
+        }
+       
+        const hasRent =1;
+        const hasBuy = 1;
+    
+        res.render("Services/cart",{title:"Cart",rentMovies,buyMovies,hasRent,hasBuy});
+    })
+    
+    
+    .catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+            });
+        })
+    .catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+            });
+    }
+    
+    //res.render("Services/cart",{title:"Cart",rentMovies,buyMovies});
+    
 
 })
 

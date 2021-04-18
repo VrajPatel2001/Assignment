@@ -128,6 +128,8 @@ router.post("/login", (req, res) => {
                 {
                     //create session
                     req.session.userInfo = user;
+                    req.session.userInfo.buyCart = [];
+                    req.session.userInfo.rentCart = [];
                     
                    res.redirect("/user/dashboard");
                     

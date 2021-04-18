@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const isUser = require('../middleware/isUser');
 const router = express.Router();
 const movieModel = require("../model/Movies");
 // const data = require("../movieData");
@@ -10,9 +11,6 @@ router.get("/movies",(req,res)=>
 {
 movieModel.find()
     .then((items)=>{
-
-        
-    
     const movies = new Array;
     let length=0;
     for(var i in items)
@@ -57,15 +55,25 @@ router.get("/description/:id",(req,res)=>
    movieModel.findById(id)
    .then((movie)=>{
 
-    if(req.session.user.type == "user")
+    let isUser = 0;
+    if(req.session.userInfo == null)
     {
-        const isUser= 1;
+        console.log("if");
+        isUser= 1;
+    }
+    else if(req.session.userInfo.type == "user"){
+        console.log("else if");
+
+        console.log(`${req.session.userInfo.type=="user"}`)
+        isUser= 1;
     }
     else{
-        isUser= 0;
+        console.log("else");
+
+        isUser=0;
     }
     
-    res.render("MoviesAndTv/description",{title:"Description",movie});
+    res.render("MoviesAndTv/description",{title:"Description",movie,isUser});
    })
    .catch(err=>console.log(`Error happened when inserting in the database: ${err}`));
 

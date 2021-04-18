@@ -606,8 +606,8 @@ border-radius: 10px;
 <h1>{{movie.name}}</h1>
 <p>{{movie.description}}</p>
 {{#if isUser}}
-<a href="/services/butCart">Buy at ${{movie.p_price}}</a>
-<a href="/services/rentCart">Rent at ${{movie.r_price}}</a>
+<a href="/services/buyCart/{{movie._id}}">Buy at ${{movie.p_price}}</a>
+<a href="/services/rentCart/{{movie._id}}">Rent at ${{movie.r_price}}</a>
 {{/if}}
        </div>
        <div class="col-md-6 text-center">

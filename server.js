@@ -43,10 +43,14 @@ app.use(session({
   }))
 
  app.use((req,res,next)=>{
+    // req.session.user.buyCart = new Array;
+    // req.session.user.rentCart = new Array;
+
       res.locals.user = req.session.userInfo;
-      res.locals.rentCart = req.session.rentCart;
+      res.locals.cart = req.session.cart;
       res.locals.buyCart = req.session.buyCart;
 
+     
       next();
   })
 
