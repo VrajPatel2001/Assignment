@@ -1,5 +1,10 @@
 <main>
 
+{{#if isEmpty}}
+<h1 class="content">Cart is empty</h1> 
+{{/if}}
+
+{{#unless isEmpty}}
 {{#if hasRent}}
     <h1 class="content">Rent Movies Or Tv:</h1> 
     {{!-- table view --}}
@@ -35,8 +40,8 @@
 {{/if}}
 
 <h1 class="total">Total: ${{total}}</h1> 
-
 <div class="services">
 <a class="conform service" href="/services/clearCart">Conform Order</a>
 </div>
+{{/unless}}
 </main>
