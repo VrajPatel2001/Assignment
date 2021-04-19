@@ -1,4 +1,4 @@
-![Home](‪C:\Users\yash\OneDrive\Desktop\Movies.png)
+![Movies](https://user-images.githubusercontent.com/80224413/115180867-9c29d500-a0a4-11eb-98cc-93b8a9a37782.png)
 
 #V-TV
 This Project is simple movie listing website created with Node.js, Mongodb, Express and handlebars. 
