@@ -446,8 +446,8 @@ let total=0;
    
     const hasRent = 1;
     const hasBuy = 0;
-console.log(rentMovies);
-    res.render("Services/cart",{title:"Cart",rentMovies,hasRent,hasBuy,total});
+    const isEmpty = 0;
+    res.render("Services/cart",{title:"Cart",rentMovies,hasRent,hasBuy,total,isEmpty});
 })
 
 
@@ -491,8 +491,8 @@ console.log(rentMovies);
    
     const hasRent =0;
     const hasBuy = 1;
-
-    res.render("Services/cart",{title:"Cart",buyMovies,hasRent,hasBuy,total});
+    const isEmpty = 0;
+    res.render("Services/cart",{title:"Cart",buyMovies,hasRent,hasBuy,total,isEmpty});
 })
 
 
@@ -566,8 +566,8 @@ console.log(rentMovies);
         console.log(buyMovies);
         const hasRent =1;
         const hasBuy = 1;
-    
-        res.render("Services/cart",{title:"Cart",rentMovies,buyMovies,hasRent,hasBuy,total});
+        const isEmpty = 0;
+        res.render("Services/cart",{title:"Cart",rentMovies,buyMovies,hasRent,hasBuy,total,isEmpty});
     })
     
     
@@ -578,7 +578,8 @@ console.log(rentMovies);
             });
     }
     
-    //res.render("Services/cart",{title:"Cart",rentMovies,buyMovies});
+    const isEmpty = 1;
+    res.render("Services/cart",{title:"Cart",isEmpty});
     
 
 })
