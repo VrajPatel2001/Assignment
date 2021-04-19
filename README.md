@@ -37,6 +37,11 @@ $ npm run dev
 ```
 
 ## Use
-* Every movie or Tv  
-This website create cart and when user conforms the order it sends email of the order detail. 
+* This website create cart and when user conforms the order it sends email of the order detail.
+* ![Order](https://user-images.githubusercontent.com/80224413/115182966-e90faa80-a0a8-11eb-9853-0de117d47f8b.png)
+* Search option is also available to search different movies.
+* ![search](https://user-images.githubusercontent.com/80224413/115183263-7226e180-a0a9-11eb-9037-2d0a281fb79a.png)
+* It also have administrator functionality. It can perform CURD operations on movies and Tv.
+* ![curd](https://user-images.githubusercontent.com/80224413/115183142-3d1a8f00-a0a9-11eb-9672-f91b367bc186.png)
+
 
