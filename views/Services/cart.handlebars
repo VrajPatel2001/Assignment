@@ -1,23 +1,41 @@
 <main>
 
 {{#if hasRent}}
-    <h1 class="content">
-        Cart module: 
-    </h1> 
+    <h1 class="content">Rent Movies Or Tv:</h1> 
     {{!-- table view --}}
-     {{#each rentMovies}}
-    <h1 class="content">{{this.name}}</h1>
-    {{/each}}
+    <table class="cart" style="width: 30%;">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr> 
+        {{#each rentMovies}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.price}}</td>
+        </tr>
+        {{/each}}
+    </table>
 {{/if}}
 
 {{#if hasBuy}}
-    <h1 class="content">
+    <h1 class="content">Buy Movies:</h1>
 
-        Cart module: 
-    </h1>
-
-    {{#each buyMovies}}
-    <h1 class="content">{{this.name}}</h1
-    {{/each}}
+   <table class="cart" style="width: 30%;">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        {{#each buyMovies}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.price}}</td>
+        </tr>
+        {{/each}}
+    </table>
 {{/if}}
+
+<h1 class="total">Total: ${{total}}</h1> 
+
+<a class="conform" href="/services/clearCart">Conform Order</a>
+
 </main>

@@ -726,3 +726,35 @@ margin-left: 30px;
 	border-bottom: 1px solid rgb(0, 0, 0);
 }
 
+.cart
+{
+    color:rgb(255, 255, 255);
+    /* border: none; */
+    border: 3px solid rgb(24, 152, 190);
+    border-radius: 10px;
+    border-spacing: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart tr{
+    border: 1px solid rgb(24, 152, 190);
+
+}
+.cart th{
+    /* border: 1px solid white; */
+    text-align: left;
+    color:rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(24, 152, 190);
+}
+
+.cart td{
+    /* border: 1px solid white; */
+font-weight: bold;
+}
+
+.total
+{
+    color: rgb(255, 255, 255);
+    font-size: x-large;
+}

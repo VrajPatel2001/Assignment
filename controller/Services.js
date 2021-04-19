@@ -409,7 +409,7 @@ else{
 
 router.get("/cart",isLoggedIn,isUser,(req,res)=>{
 
-
+let total=0;
     const rentMovies = new Array;
     const buyMovies = new Array;
 
@@ -426,7 +426,6 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
                 type:onedata.type,
                 name:onedata.name,
                 price:onedata.r_price
-
             }
         });
     let length=0;
@@ -439,7 +438,7 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
         if(items[i]._id==item.id)
         {
             //console.log(items[i]);
-
+            total+=items[i].price;
             rentMovies.push(items[i]);
 
         }
@@ -447,8 +446,8 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
    
     const hasRent = 1;
     const hasBuy = 0;
-
-    res.render("Services/cart",{title:"Cart",rentMovies,hasRent,hasBuy});
+console.log(rentMovies);
+    res.render("Services/cart",{title:"Cart",rentMovies,hasRent,hasBuy,total});
 })
 
 
@@ -458,20 +457,9 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
 
 
 
-
-
-
     if(req.session.buyCart && !req.session.cart)
     {
     req.session.buyCart.forEach(item => {
-            
-            // movieModel.findById(item.id)
-            // .then((movie)=>{
-            //     console.log(movie.name);
-            //     rentMovies.push(movie);
-            // })
-            // .catch(err=>console.log(`Error happened during finding in cart route: ${err}`));
-
             movieModel.find()
     .then((data)=>{
 
@@ -480,7 +468,7 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
                 _id:onedata._id,
                 type:onedata.type,
                 name:onedata.name,
-                price:onedata.b_price
+                price:onedata.p_price
 
             }
         });
@@ -494,6 +482,7 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
         if(items[i]._id==item.id)
         {
             //console.log(items[i]);
+            total+=items[i].price;
 
             buyMovies.push(items[i]);
 
@@ -503,7 +492,7 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
     const hasRent =0;
     const hasBuy = 1;
 
-    res.render("Services/cart",{title:"Cart",buyMovies,hasRent,hasBuy});
+    res.render("Services/cart",{title:"Cart",buyMovies,hasRent,hasBuy,total});
 })
 
 
@@ -538,7 +527,7 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
             if(items[i]._id==item.id)
             {
                 //console.log(items[i]);
-    
+                total+=items[i].price;
                 rentMovies.push(items[i]);
     
             }
@@ -554,7 +543,7 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
                     _id:movie._id,
                     type:movie.type,
                     name:movie.name,
-                    price:movie.b_price
+                    price:movie.p_price
     
                 }
             });
@@ -568,16 +557,17 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
             if(itemsB[i]._id==itemB.id)
             {
                 //console.log(items[i]);
-    
+                total+=itemsB[i].price;
                 buyMovies.push(itemsB[i]);
-    
+                
             }
         }
        
+        console.log(buyMovies);
         const hasRent =1;
         const hasBuy = 1;
     
-        res.render("Services/cart",{title:"Cart",rentMovies,buyMovies,hasRent,hasBuy});
+        res.render("Services/cart",{title:"Cart",rentMovies,buyMovies,hasRent,hasBuy,total});
     })
     
     
@@ -590,6 +580,244 @@ router.get("/cart",isLoggedIn,isUser,(req,res)=>{
     
     //res.render("Services/cart",{title:"Cart",rentMovies,buyMovies});
     
+
+})
+
+
+
+router.get("/clearCart",isLoggedIn,isUser,(req,res)=>{
+    let total = 0;
+    const rentMovies = new Array;
+    const buyMovies = new Array;
+
+    if(req.session.cart && !req.session.buyCart)
+    {
+    req.session.cart.forEach(item => {
+            
+            movieModel.find()
+    .then((data)=>{
+
+        const items = data.map(onedata=>{
+            return{
+                _id:onedata._id,
+                type:onedata.type,
+                name:onedata.name,
+                price:onedata.r_price
+            }
+        });
+    let length=0;
+    for(let i in items)
+    {
+    length++;
+    }
+    for(let i=0;i<length;i++)
+    {
+        if(items[i]._id==item.id)
+        {
+            //console.log(items[i]);
+            total+=items[i].price;
+            rentMovies.push(items[i]);
+
+        }
+    }
+   console.log(total);
+    const sgMail = require('@sendgrid/mail')
+                    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+                    const msg = {
+                        to: req.session.userInfo.email, // Change to your recipient
+                        from: 'vrajnp2001@gmail.com', // Change to your verified sender
+                        subject: 'Order Details',
+                        html: `
+                            <h3> V-TV order details </p>
+                        <p> Order Conformation: </p>   
+                        <h1 class="total">Total: $${total} </h1> `,
+                    }
+                    sgMail
+                        .send(msg)
+                        .then(() => {
+                            console.log('Email sent')
+                        })
+                        .catch((error) => {
+                            console.error(error)
+                        })
+
+                        req.session.cart.destroy;
+    res.redirect("/moviesAndTv/movies");
+    
+})
+
+
+.catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+        }); 
+    }
+
+
+
+    if(req.session.buyCart && !req.session.cart)
+    {
+    req.session.buyCart.forEach(item => {
+            movieModel.find()
+    .then((data)=>{
+
+        const items = data.map(onedata=>{
+            return{
+                _id:onedata._id,
+                type:onedata.type,
+                name:onedata.name,
+                price:onedata.p_price
+
+            }
+        });
+    let length=0;
+    for(let i in items)
+    {
+    length++;
+    }
+    for(let i=0;i<length;i++)
+    {
+        if(items[i]._id==item.id)
+        {
+            //console.log(items[i]);
+            total+=items[i].price;
+
+            buyMovies.push(items[i]);
+
+        }
+    }
+   
+    const sgMail = require('@sendgrid/mail')
+                    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+                    const msg = {
+                        to: req.session.userInfo.email, // Change to your recipient
+                        from: 'vrajnp2001@gmail.com', // Change to your verified sender
+                        subject: 'Order Details',
+                        html: `
+                        
+                        <h3> V-TV order details </p>
+                        <p> Order Conformation: </p>
+                        <h1 class="total">Total: $${total}</h1> 
+                        `,
+                    }
+                    sgMail
+                        .send(msg)
+                        .then(() => {
+                            console.log('Email sent')
+                        })
+                        .catch((error) => {
+                            console.error(error)
+                        })
+
+                        
+                        req.session.buyCart.destroy;
+
+    res.redirect("/moviesAndTv/movies");
+})
+
+
+.catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+        }); 
+    }
+
+    if(req.session.buyCart && req.session.cart)
+    {
+        req.session.cart.forEach(item => {
+                
+                
+                movieModel.find()
+        .then((data)=>{
+    
+            const items = data.map(onedata=>{
+                return{
+                    _id:onedata._id,
+                    type:onedata.type,
+                    name:onedata.name,
+                    price:onedata.r_price
+    
+                }
+            });
+        let length=0;
+        for(let i in items)
+        {
+        length++;
+        }
+        for(let i=0;i<length;i++)
+        {
+            if(items[i]._id==item.id)
+            {
+                //console.log(items[i]);
+                total+=items[i].price;
+                rentMovies.push(items[i]);
+    
+            }
+        }
+
+        req.session.buyCart.forEach(itemB => {
+                
+                movieModel.find()
+        .then((movies)=>{
+    
+            const itemsB = movies.map(movie=>{
+                return{
+                    _id:movie._id,
+                    type:movie.type,
+                    name:movie.name,
+                    price:movie.p_price
+    
+                }
+            });
+        let length=0;
+        for(let i in itemsB)
+        {
+        length++;
+        }
+        for(let i=0;i<length;i++)
+        {
+            if(itemsB[i]._id==itemB.id)
+            {
+                //console.log(items[i]);
+                total+=itemsB[i].price;
+                buyMovies.push(itemsB[i]);    
+            }
+        }
+       
+
+        const sgMail = require('@sendgrid/mail')
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+            to: req.session.userInfo.email, // Change to your recipient
+            from: 'vrajnp2001@gmail.com', // Change to your verified sender
+            subject: 'Order Details',
+            html: ` 
+            <h3> V-TV order details </p>
+            <p> Order Conformation: </p>         
+            <h1 class="total">Total: $${total}</h1>         
+            `,
+        }
+        sgMail
+            .send(msg)
+            .then(() => {
+                console.log('Email sent')
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+            req.session.cart.destroy;
+            req.session.buyCart.destroy;
+
+        res.redirect("/moviesAndTv/movies");
+    
+    })  
+    
+    .catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+            });
+        })
+    .catch(err=>console.log(`Error happened finding rent cart: ${err}`));
+            });
+    }
+    
+  
+   
 
 })
 
