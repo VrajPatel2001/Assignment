@@ -7,6 +7,7 @@ This Project is simple movie listing website created with Node.js, Mongodb, Expr
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Use](#use)
 
 ## General info
 This project lists movies and performs CURD operations for administrator. It also uses sendgrid API to send emails. 
@@ -35,5 +36,7 @@ $ npm install
 $ npm run dev
 ```
 
-##Use
+## Use
+* Every movie or Tv  
 This website create cart and when user conforms the order it sends email of the order detail. 
+
