@@ -74,7 +74,7 @@ app.use("/services",serviceRoutes);
 
 
 
-mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, { keepAlive: true,useNewUrlParser: true, useUnifiedTopology: true, keepAliveInitialDelay: 300000  })
     .then(() => {
         console.log(`Connected to mondoDB`);
     })
