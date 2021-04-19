@@ -34,3 +34,6 @@ To run this project, install it locally using npm:
 $ npm install
 $ npm run dev
 ```
+
+##Use
+This website create cart and when user conforms the order it sends email of the order detail. 
